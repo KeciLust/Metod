@@ -39,13 +39,13 @@ test('Hero dead 2', () => {
 
   expect(char).toThrowError(new Error('ваш герой погиб!'));
 });
-test(`levelUp`, () => {
-  const character = new Character(`Denis`, `Bowman`);
+test('levelUp', () => {
+  const character = new Character('Denis', 'Bowman');
   character.levelUp();
   expect(character.level).toBe(2);
 });
-test(`damage`, () => {
-  const character = new Character(`Denis`, `Bowman`);
+test('damage', () => {
+  const character = new Character('Denis', 'Bowman');
   character.defence = 25;
   character.damage(100);
 
