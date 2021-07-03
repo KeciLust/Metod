@@ -21,3 +21,33 @@ test('Class', () => {
 
   expect(char).toThrowError(new Error('Введите существующий класс!'));
 });
+test('Hero dead', () => {
+  const character = new Character('Denis', 'Bowman');
+  character.health = 0;
+  function char() {
+    character.levelUp();
+  }
+
+  expect(char).toThrowError(new Error('ваш герой погиб!'));
+});
+test('Hero dead 2', () => {
+  const character = new Character('Denis', 'Bowman');
+  character.health = 0;
+  function char() {
+    character.damage();
+  }
+
+  expect(char).toThrowError(new Error('ваш герой погиб!'));
+});
+test(`levelUp`, () => {
+  const character = new Character(`Denis`, `Bowman`);
+  character.levelUp();
+  expect(character.level).toBe(2);
+});
+test(`damage`, () => {
+  const character = new Character(`Denis`, `Bowman`);
+  character.defence = 25;
+  character.damage(100);
+
+  expect(character.health).toBe(25);
+});

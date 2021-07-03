@@ -4,8 +4,8 @@ export default class Character {
 
     this.name = name;
     this.type = type;
-    this.health = '100';
-    this.level = '1';
+    this.health = 100;
+    this.level = 1;
     this.err();
   }
 
@@ -19,5 +19,23 @@ export default class Character {
     } else if (!this.arrClass.includes(this.type)) {
       throw new Error('Введите существующий класс!');
     }
+  }
+
+  levelUp() {
+    if (this.health <= 0) {
+      throw new Error('ваш герой погиб!');
+    }
+    // eslint-disable-next-line no-plusplus
+    this.level++;
+    this.attack *= 1.2;
+    this.defence *= 1.2;
+    this.health = 100;
+  }
+
+  damage(points) {
+    if (this.health <= 0) {
+      throw new Error('ваш герой погиб!');
+    }
+    this.health -= points * (1 - this.defence / 100);
   }
 }
